@@ -47,22 +47,3 @@ const SideNav = () => {
 }
 
 export default SideNav
-
-{/*}
-export function SideNav() {
-    return (
-        <>
-           <div className="sn-main-container">
-            <div className="sn-top-container">
-                <h2 className='sn-top-item'>Welcome</h2>
-                <p className='sn-top-item'>Guest</p>
-            </div>
-            <div className="sn-nav-container">
-                <button className='sn-nav-item'>Sign in/Make an account</button>
-                <button className='sn-nav-item'>Build a packing list</button>
-            </div>
-           </div>
-        </>
-    )
-}
-*/}

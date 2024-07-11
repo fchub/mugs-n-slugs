@@ -7,7 +7,7 @@ export function HeadMenu() {
   
   return (
       <>
-        <div className="hm-main-container">
+        <div className="bg-white position: fixed z-5 w-full h-16 flex items-center">
           <div className='hm-logo-container'>
             <a className={location.pathname === '/about' ? 'active' : ''} href='/about'>
               <button className='hm-nav-item' id='logo-button'>
