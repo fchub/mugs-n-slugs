@@ -1,4 +1,3 @@
-import './HeadMenuStyle.css'
 import mugsLogo from './../../assets/MnSLogo.png'
 import { useLocation } from 'react-router-dom'
 
@@ -8,28 +7,27 @@ export function HeadMenu() {
   return (
       <>
         <div className="bg-white position: fixed z-5 w-full h-16 flex items-center">
-          <div className='hm-logo-container'>
-            <a className={location.pathname === '/about' ? 'active' : ''} href='/about'>
-              <button className='hm-nav-item' id='logo-button'>
-                <img src={mugsLogo} className="hm-logo" alt="Mugs logo" />
+          <div className="items-center pl-[25%] mx-4">
+            <a className="flex flex-shrink-0" href='/about'>
+              <button className="w-16 h-16 flex-shrink-0">
+                <img src={mugsLogo} alt="Mugs logo" />
               </button>
             </a>
           </div>
-          <div className='hm-menu-item-container'>
-            <a className={location.pathname === '/build' ? 'active' : ''} href='/build'>
-              <button className="hm-nav-item">Build</button>
+          <div className="flex flex-row-reverse ml-auto items-center pr-[25%] flex-wrap-reverse">
+            <a className={`mx-4 font-serif font-semibold text-[#076407] \
+              hover:text-[#C6C66A] focus:text-#C6C66A] ${location.pathname === '/build' ? 'text-[#AEAE0B]' : ''}`} href='/build'>
+                Build
             </a>
-            <a className={location.pathname === '/account' ? 'active' : ''} href='/account'>
-              <button className="hm-nav-item">Account</button>
+            <a className={`mx-4 font-serif font-semibold text-[#076407] \
+              hover:text-[#C6C66A] focus:text-#C6C66A] ${location.pathname === '/account' ? 'text-[#AEAE0B]' : ''}`} href='/account'>
+                Account
             </a>
-            <a className={location.pathname === '/about' ? 'active' : ''} href='/about'>
-              <button className="hm-nav-item">About us</button>
+            <a className={`mx-4 font-serif font-semibold text-[#076407] \
+              hover:text-[#C6C66A] focus:text-#C6C66A] ${location.pathname === '/about' ? 'text-[#AEAE0B]' : ''}`} href='/about'>
+                About
             </a>
           </div>
-        </div>
-        
-        <div className='lineContainer'>
-          <hr className='line'></hr>
         </div>
       </>
     )
