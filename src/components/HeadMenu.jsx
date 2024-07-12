@@ -1,4 +1,4 @@
-import mugsLogo from './../../assets/MnSLogo.png'
+import mugsLogo from './../assets/MnSLogo.png'
 import { useLocation } from 'react-router-dom'
 
 export function HeadMenu() {
@@ -6,7 +6,7 @@ export function HeadMenu() {
   
   return (
       <>
-        <div className="bg-white position: fixed z-5 w-full h-16 flex items-center">
+        <div className="bg-white position: fixed z-11 w-full h-16 flex items-center">
           <div className="items-center pl-[25%] mx-4">
             <a className="flex flex-shrink-0" href='/about'>
               <button className="w-16 h-16 flex-shrink-0">
