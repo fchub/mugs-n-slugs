@@ -6,7 +6,7 @@ import Account from './pages/Account.jsx'
 import Build from './pages/Build.jsx'
 
 import { HeadMenu } from './components/HeadMenu.jsx'
-import SideNav from './components/SideNav/SideNav.jsx'
+import SideNav from './components/SideNav.jsx'
 
 function App() {
   return (
