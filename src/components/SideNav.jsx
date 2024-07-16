@@ -14,13 +14,12 @@ const SideNav = () => {
     return (
         //if CloseMenu = false, then use NORMAL sidenav app, otherwise use ACTIVE
         <div className={`bg-white position: fixed flex flex-col space-y-2 left-0 top-16 \
-            h-[100vh] z-10 ${closeMenu === false ? "w-52  shadow-2xl" : "w-10 bg-transparent"} \
+            h-[100vh] z-10 ${closeMenu === false ? "w-52 shadow-black shadow-xl" : "w-10 bg-opacity-0"} \
             duration-500`}>
             
             {/*Burger container*/}
-            <div className={`content-none bg-[#076407] position: absolute right-[-22.5px] \
-                top-4 w-11 h-11 z-9 rounded-[2rem] shadow-2xl \
-                ${closeMenu === false ? 'burgerContainerr' : 'burgerContainer active'}`}>
+            <div className={`content-none bg-[#076407] position: absolute shadow-black shadow-md right-[-22.5px] \
+                top-4 w-11 h-11 z-9 rounded-[2rem]`}>
                 
                 {/*Burger trigger*/}
                 <div className={`w-11 h-11 z-40 cursor-pointer bg-blue-300\
@@ -52,11 +51,11 @@ const SideNav = () => {
             {/*contents container*/}
             <div className={`pt-1 ${closeMenu === false ? "opacity-100 duration-500" : "opacity-0 pointer-events-none duration-100"}`}>
                 <ul className="flex flex-col capitalize px-4 font-serif text-[16px] list-none">
-                    <li className="w-100% cursor-pointer hover:bg-[#AEAE0B] rounded-lg \
+                    <li className="w-100% cursor-pointer hover:bg-[#aeae0b52] rounded-lg \
                         py-1 px-2">
                         <a href="/build">build</a>
                     </li>
-                    <li className="w-100% cursor-pointer  hover:bg-[#AEAE0B] rounded-lg \
+                    <li className="w-100% cursor-pointer  hover:bg-[#aeae0b52] rounded-lg \
                         py-1 px-2">
                         <a href="/account">account</a>
                     </li>

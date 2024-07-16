@@ -1,4 +1,3 @@
-import './PagesStyle.scss'
 
 const Account = () => {
     return (

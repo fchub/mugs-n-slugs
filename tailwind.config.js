@@ -4,8 +4,11 @@ const plugin = require('tailwindcss/plugin')
 export default {
   content: ['.*html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'unpackedGround': "url('./src/assets/Algonquin2021UnpackedGround.jpeg')",
+      },
+    }
   },
   plugins: [],
 }
-

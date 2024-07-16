@@ -1,4 +1,3 @@
-import './PagesStyle.scss'
 
 const Build = () => {
     return (
