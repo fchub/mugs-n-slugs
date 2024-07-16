@@ -2,6 +2,12 @@ import { useState } from 'react'
 import React from 'react'
 
 const About = () => {
+    const [closeCard, setCloseCard] = useState(true)
+
+    //function that allows changing active state using True to False of above
+    const handleCloseCard= () => {
+        setCloseCard(!closeCard) //changes it to opposite 
+    }
 
     return (
         <div className='position: absolute top-[64px] font-serif w-[100%]'> {/*main content container*/}
