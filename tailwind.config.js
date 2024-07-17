@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'unpackedGround': "url('./src/assets/Algonquin2021UnpackedGround.jpeg')",
+        'unpackedGround': "url('./src/assets/Algonquin2021Unpacked2.0.jpeg')",
       },
     }
   },
