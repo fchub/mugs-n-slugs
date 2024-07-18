@@ -44,7 +44,7 @@ const SideNav = () => {
                 ${closeMenu === false ? "opacity-100 duration-500 text-nowrap" : "opacity-0 duration-100"}`}>
                 <div className="font-serif">
                     <p className="font-bold text-[18px] capitalize">Hello, Guest</p>
-                    <p className="text-xs text-[#076407] lowercase">fycfyc@gmail.com</p>
+                    <a className="text-xs text-[#076407] lowercase" href="/account">fycfyc@gmail.com</a>
                 </div>
             </div>
 

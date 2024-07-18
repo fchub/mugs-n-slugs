@@ -4,11 +4,23 @@ import {CardFrontData} from './data/CardData.jsx'
 import { CardBackData } from './data/CardData.jsx'
 
 const About = () => {
-    const [closeCard, setCloseCard] = useState(true)
-
     //function that allows changing active state using True to False of above
-    const handleCloseCard= () => {
-        setCloseCard(!closeCard) //changes it to opposite 
+    const [closeCard1, setCloseCard1] = useState(true)
+    const [closeCard2, setCloseCard2] = useState(true)
+    const [closeCard3, setCloseCard3] = useState(true)
+    const [closeCard4, setCloseCard4] = useState(true)
+
+    const handleCloseCard1= () => {
+        setCloseCard1(!closeCard1) //changes it to opposite 
+    }
+    const handleCloseCard2= () => {
+        setCloseCard2(!closeCard2) //changes it to opposite 
+    }
+    const handleCloseCard3= () => {
+        setCloseCard3(!closeCard3) //changes it to opposite 
+    }
+    const handleCloseCard4= () => {
+        setCloseCard4(!closeCard4) //changes it to opposite 
     }
 
     return (
@@ -33,11 +45,11 @@ const About = () => {
                             
                             {/*card-inner*/}
                             <div onClick={()=>(
-                                    handleCloseCard()
+                                    handleCloseCard1()
                                 )}
                                 className={`position: relative w-[100%] h-[100%] rounded-2xl shadow-2xl \
                                     transition-all duration-500 [transform-style:preserve-3d] \
-                                    ${closeCard === false ? '[transform:rotateY(180deg)]' : ''}`} >
+                                    ${closeCard1 === false ? '[transform:rotateY(180deg)]' : ''}`} >
 
                                 {/*card front*/}
                                 <div className='position: absolute flex w-[100%] h-[100%] rounded-2xl bg-[#076407] items-center justify-center font-bold text-4xl [backface-visibility:hidden]'>
@@ -45,7 +57,7 @@ const About = () => {
                                 </div>
 
                                 {/*card back*/}
-                                <div className='position: absolute flex w-[100%] h-[100%] rounded-2xl bg-white [transform:rotateY(180deg)] [backface-visibility:hidden]'>
+                                <div className='position: absolute flex w-[100%] h-[100%] rounded-2xl bg-[#aeae0b52] [transform:rotateY(180deg)] [backface-visibility:hidden]'>
                                     <p>We are a few campers that</p>
                                 </div>
                             </div>
@@ -56,11 +68,11 @@ const About = () => {
                             
                             {/*card-inner*/}
                             <div onClick={()=>(
-                                    handleCloseCard()
+                                    handleCloseCard2()
                                 )}
                                 className={`position: relative w-[100%] h-[100%] rounded-2xl shadow-2xl \
                                     transition-all duration-500 [transform-style:preserve-3d] \
-                                    ${closeCard === false ? '[transform:rotateY(180deg)]' : ''}`} >
+                                    ${closeCard2 === false ? '[transform:rotateY(180deg)]' : ''}`} >
 
                                 {/*card front*/}
                                 <div className='position: absolute flex w-[100%] h-[100%] rounded-2xl bg-[#076407] items-center text-center justify-center font-bold text-4xl [backface-visibility:hidden]'>
@@ -68,7 +80,7 @@ const About = () => {
                                 </div>
 
                                 {/*card back*/}
-                                <div className='position: absolute flex w-[100%] h-[100%] rounded-2xl bg-white [transform:rotateY(180deg)] [backface-visibility:hidden]'>
+                                <div className='position: absolute flex w-[100%] h-[100%] rounded-2xl bg-[#aeae0b52] [transform:rotateY(180deg)] [backface-visibility:hidden]'>
                                     <ul className='howListItems'>
                                         <li>Answer questions to produce template packing list</li>
                                         <li>Check template packing list produced from parameters</li>
@@ -89,11 +101,11 @@ const About = () => {
                             
                             {/*card-inner*/}
                             <div onClick={()=>(
-                                    handleCloseCard()
+                                    handleCloseCard3()
                                 )}
                                 className={`position: relative w-[100%] h-[100%] rounded-2xl shadow-2xl \
                                     transition-all duration-500 [transform-style:preserve-3d] \
-                                    ${closeCard === false ? '[transform:rotateY(180deg)]' : ''}`} >
+                                    ${closeCard3 === false ? '[transform:rotateY(180deg)]' : ''}`} >
 
                                 {/*card front*/}
                                 <div className='position: absolute flex w-[100%] h-[100%] rounded-2xl bg-[#076407] items-center justify-center text-center font-bold text-4xl [backface-visibility:hidden]'>
@@ -101,7 +113,7 @@ const About = () => {
                                 </div>
 
                                 {/*card back*/}
-                                <div className='position: absolute flex w-[100%] h-[100%] rounded-2xl bg-white [transform:rotateY(180deg)] [backface-visibility:hidden]'>
+                                <div className='position: absolute flex w-[100%] h-[100%] rounded-2xl bg-[#aeae0b52] [transform:rotateY(180deg)] [backface-visibility:hidden]'>
                                     <p>We are a few campers that</p>
                                 </div>
                             </div>
@@ -112,11 +124,11 @@ const About = () => {
                             
                             {/*card-inner*/}
                             <div onClick={()=>(
-                                    handleCloseCard()
+                                    handleCloseCard4()
                                 )}
                                 className={`position: relative w-[100%] h-[100%] rounded-2xl shadow-2xl \
                                     transition-all duration-500 [transform-style:preserve-3d] \
-                                    ${closeCard === false ? '[transform:rotateY(180deg)]' : ''}`} >
+                                    ${closeCard4 === false ? '[transform:rotateY(180deg)]' : ''}`} >
 
                                 {/*card front*/}
                                 <div className='position: absolute flex w-[100%] h-[100%] rounded-2xl bg-[#076407] items-center justify-center font-bold text-4xl [backface-visibility:hidden]'>
@@ -124,7 +136,7 @@ const About = () => {
                                 </div>
 
                                 {/*card back*/}
-                                <div className='position: absolute flex w-[100%] h-[100%] rounded-2xl bg-white [transform:rotateY(180deg)] [backface-visibility:hidden]'>
+                                <div className='position: absolute flex w-[100%] h-[100%] rounded-2xl bg-[#aeae0b52] [transform:rotateY(180deg)] [backface-visibility:hidden]'>
                                     <ul className='howListItems'>
                                         <li>Answer questions to produce template packing list</li>
                                         <li>Check template packing list produced from parameters</li>
