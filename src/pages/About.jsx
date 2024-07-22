@@ -1,7 +1,5 @@
 import { useState } from 'react'
 import React from 'react'
-import {CardFrontData} from './data/CardData.jsx'
-import { CardBackData } from './data/CardData.jsx'
 
 const About = () => {
     //function that allows changing active state using True to False of above
