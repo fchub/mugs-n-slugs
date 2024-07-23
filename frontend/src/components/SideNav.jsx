@@ -13,6 +13,7 @@ const SideNav = () => {
 
     return (
         //if CloseMenu = false, then use NORMAL sidenav app, otherwise use ACTIVE
+        <>
         <div className={`bg-white position: fixed flex flex-col space-y-2 left-0 top-16 \
             h-[100vh] z-10 ${closeMenu === false ? "w-52 shadow-black shadow-xl" : "w-10 bg-opacity-0"} \
             duration-500`}>
@@ -63,6 +64,7 @@ const SideNav = () => {
                 </ul>
             </div>
         </div>
+        </>
     )
 }
 

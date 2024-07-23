@@ -1,4 +1,4 @@
-import SideNav from '../components/SideNav.jsx'
+import SideNav from '../../components/SideNav.jsx'
 
 const Build = () => {
     return (

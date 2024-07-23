@@ -23,7 +23,7 @@ export function HeadMenu() {
   return (
       <div className="bg-white position: fixed z-30 w-full h-16 flex items-center shadow-xl">
         <div className="items-center pl-[25%] mx-4">
-          <a className="flex flex-shrink-0" href='/about'>
+          <a className="flex flex-shrink-0" href='/home'>
             <button className="w-16 h-16 flex-shrink-0">
               <img src={mugsLogo} alt="Mugs logo" />
             </button>
@@ -48,7 +48,7 @@ export function HeadMenu() {
                   </li>
                   <hr className='border-gray-300 place-self-center w-44'></hr>
                   <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
-                    <a className='m-2' href='/build'>Open past list</a>
+                    <a className='m-2' href='/build/lists'>Open past list</a>
                   </li>
                   <hr className='border-gray-300 place-self-center w-44'></hr>
                   <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
@@ -95,24 +95,26 @@ export function HeadMenu() {
             onMouseLeave={() => (handleDrop3())} 
             onMouseEnter={()=> (handleDrop3())}>
             <a className={`mx-4 font-serif font-semibold text-[#076407] \
-              hover:text-[#C6C66A] focus:text-#C6C66A] ${location.pathname === '/about' ? 'text-[#AEAE0B]' : ''}`} href='/about'>
-                About
+              hover:text-[#C6C66A] focus:text-#C6C66A] ${location.pathname === '/home' ? 'text-[#AEAE0B]' : ''}`} href='/home'>
+                Home
             </a>
             {/*DropMenu Container*/}
             <div className={`position: fixed top-11 w-52 rounded-lg shadow-black shadow-md\
               ${closeDrop3 === true ? "h-0 pointer-events-none duration-300" : "h-auto duration-300 bg-white border-1 border-slate-300"} `}>
                 <ul className={`font-serif font-thin text-sm flex flex-col py-2 pr-2 pl-2 list-none px-0 m-0\
                   ${closeDrop3 === true ? "opacity-0" : ""}`}>
+                  <a className='m-1' href='/home'>
+                    <li className='hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                      Welcome
+                    </li>
+                  </a>
+                  <hr className='border-gray-300 place-self-center w-44'></hr>
                   <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
-                    <a className='m-2' href='/about'>Welcome</a>
+                    <a className='m-2' href='/home#home_info'>Info</a>
                   </li>
                   <hr className='border-gray-300 place-self-center w-44'></hr>
                   <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
-                    <a className='m-2' href='/about'>Info</a>
-                  </li>
-                  <hr className='border-gray-300 place-self-center w-44'></hr>
-                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
-                    <a className='m-2' href='/about'>Contact us</a>
+                    <a className='m-2' href='/home'>Contact us</a>
                   </li>
                 </ul>
             </div>
