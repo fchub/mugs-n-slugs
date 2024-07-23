@@ -39,13 +39,21 @@ export function HeadMenu() {
                 Build
             </a>
             {/*DropMenu Container*/}
-            <div className={`position: fixed top-11 pl-3.5 w-36 rounded-lg shadow-black shadow-lg\
-              ${closeDrop1 === true ? "h-0 bg-opacity-0 pointer-events-none duration-500" : "h-auto duration-500 bg-white border-1 border-slate-300"} `}>
-                <ul className={`font-serif font-thin text-sm flex flex-col py-2\
+            <div className={`position: fixed top-11 w-52 rounded-lg shadow-black shadow-md\
+              ${closeDrop1 === true ? "h-0 pointer-events-none duration-300" : "h-auto duration-300 bg-white border-1 border-slate-300"}`}>
+                <ul className={`font-serif font-thin text-sm flex flex-col py-2 pr-2 pl-2 list-none px-0 m-0\
                   ${closeDrop1 === true ? "opacity-0" : ""}`}>
-                  <li className='py-1'>Start new list</li>
-                  <li className='py-1'>Open past list</li>
-                  <li className='py-1'>Create your own template</li>
+                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                    <a className='m-2' href='/build'>Start new list</a>
+                  </li>
+                  <hr className='border-gray-300 place-self-center w-44'></hr>
+                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                    <a className='m-2' href='/build'>Open past list</a>
+                  </li>
+                  <hr className='border-gray-300 place-self-center w-44'></hr>
+                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                    <a className='m-2' href='/build'>Create your own template</a>
+                  </li>
                 </ul>
             </div>
           </div>
@@ -59,15 +67,25 @@ export function HeadMenu() {
                 Account
             </a>
             {/*DropMenu Container*/}
-            <div className={`position: fixed top-11 pl-3.5 w-36 rounded-lg shadow-black shadow-lg\
-              ${closeDrop2 === true ? "h-0 bg-opacity-0 pointer-events-none duration-500" : "h-auto duration-500 bg-white border-1 border-slate-300"} `}>
-                <ul className={`font-serif font-thin text-sm flex flex-col py-2\
+            <div className={`position: fixed top-11 w-52 rounded-lg shadow-black shadow-md\
+              ${closeDrop2 === true ? "h-0 pointer-events-none duration-300" : "h-auto duration-300 bg-white border-1 border-slate-300"} `}>
+                <ul className={`font-serif font-thin text-sm flex flex-col py-2 pr-2 pl-2 list-none px-0 m-0\
                   ${closeDrop2 === true ? "opacity-0" : ""}`}>
-                  <li className='py-1 cursor-pointer'>
-                    <a>Log-in/Sign-up</a>
+                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                    <a className='m-2' href='/account'>Sign-in/Make an account</a>
                   </li>
-                  <li className='py-1'>Profile</li>
-                  <li className='py-1'>Settings</li>
+                  <hr className='border-gray-300 place-self-center w-44'></hr>
+                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                    <a className='m-2' href='/account'>Profile</a>
+                  </li>
+                  <hr className='border-gray-300 place-self-center w-44'></hr>
+                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                    <a className='m-2' href='/account'>Friends</a>
+                  </li>
+                  <hr className='border-gray-300 place-self-center w-44'></hr>
+                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                    <a className='m-2' href='/account'>Settings</a>
+                  </li>
                 </ul>
             </div>
           </div>
@@ -81,13 +99,21 @@ export function HeadMenu() {
                 About
             </a>
             {/*DropMenu Container*/}
-            <div className={`position: fixed top-11 pl-3.5 w-36 rounded-lg shadow-black shadow-lg\
-              ${closeDrop3 === true ? "h-0 bg-opacity-0 pointer-events-none duration-500" : "h-auto duration-500 bg-white border-1 border-slate-300"} `}>
-                <ul className={`font-serif font-thin text-sm flex flex-col py-2\
+            <div className={`position: fixed top-11 w-52 rounded-lg shadow-black shadow-md\
+              ${closeDrop3 === true ? "h-0 pointer-events-none duration-300" : "h-auto duration-300 bg-white border-1 border-slate-300"} `}>
+                <ul className={`font-serif font-thin text-sm flex flex-col py-2 pr-2 pl-2 list-none px-0 m-0\
                   ${closeDrop3 === true ? "opacity-0" : ""}`}>
-                  <li className='py-1'>Welcome</li>
-                  <li className='py-1'>Info</li>
-                  <li className='py-1'>Contact us</li>
+                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                    <a className='m-2' href='/about'>Welcome</a>
+                  </li>
+                  <hr className='border-gray-300 place-self-center w-44'></hr>
+                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                    <a className='m-2' href='/about'>Info</a>
+                  </li>
+                  <hr className='border-gray-300 place-self-center w-44'></hr>
+                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                    <a className='m-2' href='/about'>Contact us</a>
+                  </li>
                 </ul>
             </div>
           </div>

@@ -55,6 +55,7 @@ const SideNav = () => {
                         py-1 px-2">
                         <a href="/build">build</a>
                     </li>
+                    <hr className='border-gray-300 place-self-center w-40'></hr>
                     <li className="w-100% cursor-pointer  hover:bg-[#aeae0b52] rounded-lg \
                         py-1 px-2">
                         <a href="/account">account</a>
