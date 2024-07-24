@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react' //saves values
 import React from 'react'
 
 const Home = () => {
@@ -21,6 +21,17 @@ const Home = () => {
         setCloseCard4(!closeCard4) //changes it to opposite 
     }
 
+
+    const [email, setEmail] = useState('') //default value?
+    const [message, setMessage] = useState('')
+    
+    //every change we make to email, it resets and sets email to the above variable email, saved to Value={email}
+    const handleSubmit = (e) => {
+        e.preventDefault() //says that we PREVENT default submit action, and that we do our own thing
+        
+        console.log(email)
+    }
+    
     return (
         <>
             <div className='position: absolute top-[64px] font-serif w-[100%]'> {/*main content container*/}
@@ -150,6 +161,26 @@ const Home = () => {
                     </div>
                     
                     {/*contact us container*/}
+                    <div className='flex flex-col w-[100%] h-[30rem] items-center justify-center \
+                        bg-dryingClothes bg-no-repeat bg-cover bg-center'>                        
+                        <form className={`flex flex-col space-y-4 bg-white opacity-95 py-8 px-6 rounded-xl \
+                            w-96 h-auto`}>
+                            <h1 className={`font-serif font-bold text-xl p-2 place-self-center`}>Contact Us</h1>
+
+                            <div className='flex flex-col'>
+                                <label>Email</label>
+                                <input className='bg-white rounded-xl py-1 px-2 border-black border-[1px]' type="text" id="email" name="email" value={email} onChange={ (e) => setEmail(e.target.value)}/>
+                            </div>
+                            
+                            <div className='flex flex-col'>
+                                <label>Message</label>
+                                <textarea className='bg-white  rounded-xl py-1 px-2 h-40 border-black border-[1px]'  
+                                    id="message" name="message" value={message} onChange={ (e) => setMessage(e.target.value)}></textarea>
+                            </div>
+                            <button className={`border-blue-500 border-[1px] rounded-xl w-28 py-1 place-self-center \
+                                text-blue-700 text-sm`} type="submit" onClick={handleSubmit}>Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </>

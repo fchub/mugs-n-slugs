@@ -7,6 +7,7 @@ export default {
     extend: {
       backgroundImage: {
         'unpackedGround': "url('./src/assets/Algonquin2021Unpacked2.0.jpeg')",
+        'dryingClothes': "url('./src/assets/Killarney2023dryingclothes.jpeg')",
       },
     }
   },
