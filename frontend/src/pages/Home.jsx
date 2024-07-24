@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import React from 'react'
 
-const About = () => {
+const Home = () => {
     //function that allows changing active state using True to False of above
     const [closeCard1, setCloseCard1] = useState(true)
     const [closeCard2, setCloseCard2] = useState(true)
@@ -148,10 +148,12 @@ const About = () => {
                             </div>
                         </div> 
                     </div>
+                    
+                    {/*contact us container*/}
                 </div>
             </div>
         </>
     )
 }
 
-export default About
+export default Home

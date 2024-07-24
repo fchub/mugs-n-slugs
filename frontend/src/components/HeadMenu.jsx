@@ -2,6 +2,8 @@ import mugsLogo from '../assets/MnSLogo.png'
 import { useLocation } from 'react-router-dom'
 import { useState } from 'react'
 import React from 'react'
+import { useContext } from 'react'
+import Context from './Context.jsx'
 
 export function HeadMenu() {
   const location = useLocation() //for changing which thing is highlighted
@@ -19,6 +21,8 @@ export function HeadMenu() {
   const handleDrop3= () => {
     setDrop3(!closeDrop3)
   }
+
+  const userData = useContext(Context) //context from App, that we created, context provi8der
 
   return (
       <div className="bg-white position: fixed z-30 w-full h-16 flex items-center shadow-xl">
@@ -41,19 +45,35 @@ export function HeadMenu() {
             {/*DropMenu Container*/}
             <div className={`position: fixed top-11 w-52 rounded-lg shadow-black shadow-md\
               ${closeDrop1 === true ? "h-0 pointer-events-none duration-300" : "h-auto duration-300 bg-white border-1 border-slate-300"}`}>
-                <ul className={`font-serif font-thin text-sm flex flex-col py-2 pr-2 pl-2 list-none px-0 m-0\
+                
+                {/*user info container*/}
+                <div className={`justify-center items-center text-center w-[100%] h-auto \
+                  font-serif font-medium text-md py-1 m-0 flex-wrap\
                   ${closeDrop1 === true ? "opacity-0" : ""}`}>
-                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
-                    <a className='m-2' href='/build'>Start new list</a>
-                  </li>
+                  <h1>You have made {userData.pastLists} lists</h1>
+                </div>
+                <hr className={`border-gray-300 place-self-center w-[100%] \
+                  ${closeDrop1 === true ? "opacity-0" : ""}`}></hr>
+                
+                <ul className={`font-serif font-thin text-sm flex flex-col pb-2 pt-0 pr-2 pl-2 list-none m-0\
+                  ${closeDrop1 === true ? "opacity-0" : ""}`}>
+                  <a className='mx-2 my-1' href='/build'>
+                    <li className='py-1 px-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                      Start new list
+                    </li>
+                  </a>
                   <hr className='border-gray-300 place-self-center w-44'></hr>
-                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
-                    <a className='m-2' href='/build/lists'>Open past list</a>
-                  </li>
+                  <a className='mx-2 my-1' href='/build/pastlists'>
+                    <li className='py-1 px-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                      Open past list
+                    </li>
+                  </a>
                   <hr className='border-gray-300 place-self-center w-44'></hr>
-                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
-                    <a className='m-2' href='/build'>Create your own template</a>
-                  </li>
+                  <a className='mx-2 my-1' href='/build'>
+                    <li className='py-1 px-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                      Create your own template
+                    </li>
+                  </a>
                 </ul>
             </div>
           </div>
@@ -69,23 +89,48 @@ export function HeadMenu() {
             {/*DropMenu Container*/}
             <div className={`position: fixed top-11 w-52 rounded-lg shadow-black shadow-md\
               ${closeDrop2 === true ? "h-0 pointer-events-none duration-300" : "h-auto duration-300 bg-white border-1 border-slate-300"} `}>
-                <ul className={`font-serif font-thin text-sm flex flex-col py-2 pr-2 pl-2 list-none px-0 m-0\
+                
+                 {/*user info container*/}
+                <div className={`justify-center items-center text-center w-[100%] h-auto \
+                  font-serif font-medium text-lg py-1 m-0\
                   ${closeDrop2 === true ? "opacity-0" : ""}`}>
-                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
-                    <a className='m-2' href='/account'>Sign-in/Make an account</a>
-                  </li>
+                  <h1>Hello, {userData.name}</h1>
+                  <h3 className={`font-thin text-xs`}>{userData.email}</h3>
+                </div>
+                <hr className={`border-gray-300 place-self-center w-[100%] \
+                  ${closeDrop2 === true ? "opacity-0" : ""}`}></hr>
+                <ul className={`font-serif font-thin text-sm flex flex-col pb-2 pt-0 pr-2 pl-2 list-none m-0\
+                  ${closeDrop2 === true ? "opacity-0" : ""}`}>
+                  <a className={`mx-2 my-1 ${userData.loggedIn === true ? "hidden" : ""}`} href='/account'>
+                    <li className='py-1 px-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                      Sign-in/Make an account
+                    </li>
+                  </a>
+                  <hr className={`border-gray-300 place-self-center w-44 \
+                    ${userData.loggedIn === true ? "hidden" : ""}`}></hr>
+                  <a className='mx-2 my-1' href='/account'>
+                    <li className='py-1 px-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                      Profile
+                    </li>
+                  </a>
                   <hr className='border-gray-300 place-self-center w-44'></hr>
-                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
-                    <a className='m-2' href='/account'>Profile</a>
-                  </li>
+                  <a className='mx-2 my-1' href='/account'>
+                    <li className='py-1 px-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                      Friends
+                    </li>
+                  </a>
                   <hr className='border-gray-300 place-self-center w-44'></hr>
-                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
-                    <a className='m-2' href='/account'>Friends</a>
-                  </li>
+                  <a className='mx-2 my-1' href='/account'>
+                    <li className='py-1 px-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                      Settings
+                    </li>
+                  </a>
                   <hr className='border-gray-300 place-self-center w-44'></hr>
-                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
-                    <a className='m-2' href='/account'>Settings</a>
-                  </li>
+                  <a className={`mx-2 my-1 ${userData.loggedIn === true ? "" : "hidden"}`} href='/account'>
+                    <li className='py-1 px-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                      Sign out
+                    </li>
+                  </a>
                 </ul>
             </div>
           </div>
@@ -103,19 +148,19 @@ export function HeadMenu() {
               ${closeDrop3 === true ? "h-0 pointer-events-none duration-300" : "h-auto duration-300 bg-white border-1 border-slate-300"} `}>
                 <ul className={`font-serif font-thin text-sm flex flex-col py-2 pr-2 pl-2 list-none px-0 m-0\
                   ${closeDrop3 === true ? "opacity-0" : ""}`}>
-                  <a className='m-1' href='/home'>
-                    <li className='hover:bg-[#31652b52] cursor-pointer rounded-lg'>
+                  <a className='mx-2 my-1' href='/home'>
+                    <li className='py-1 px-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
                       Welcome
                     </li>
                   </a>
                   <hr className='border-gray-300 place-self-center w-44'></hr>
-                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
-                    <a className='m-2' href='/home#home_info'>Info</a>
-                  </li>
+                  <a className='mx-2 my-1'  href='/home#home_info'>
+                    <li className='py-1 px-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>Info</li>
+                  </a>
                   <hr className='border-gray-300 place-self-center w-44'></hr>
-                  <li className='py-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
-                    <a className='m-2' href='/home'>Contact us</a>
-                  </li>
+                  <a className='mx-2 my-1' href='/home'>
+                    <li className='py-1 px-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>Contact us</li>
+                  </a>
                 </ul>
             </div>
           </div>

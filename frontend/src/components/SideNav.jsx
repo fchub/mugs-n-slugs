@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { useContext } from 'react'
+import Context from './Context.jsx'
 
 const SideNav = () => {
     const location = useLocation() //for changing which thing is highlighted
@@ -10,6 +12,8 @@ const SideNav = () => {
     const handleCloseMenu = () => {
         setCloseMenu(!closeMenu) //changes it to opposite 
     }
+
+    const userData = useContext(Context) //context from App, that we created, context provi8der
 
     return (
         //if CloseMenu = false, then use NORMAL sidenav app, otherwise use ACTIVE
@@ -44,8 +48,8 @@ const SideNav = () => {
             <div className={`text-center pb-1 shrink-0\
                 ${closeMenu === false ? "opacity-100 duration-500 text-nowrap" : "opacity-0 duration-100"}`}>
                 <div className="font-serif">
-                    <p className="font-bold text-[18px] capitalize">Hello, Guest</p>
-                    <a className="text-xs text-[#076407] lowercase" href="/account">fycfyc@gmail.com</a>
+                    <p className="font-bold text-[18px] capitalize">Hello, {userData.name}</p>
+                    <a className="text-xs text-[#076407] lowercase" href="/account">{userData.email}</a>
                 </div>
             </div>
 

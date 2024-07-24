@@ -4,7 +4,8 @@ import { Footer } from './Footer.jsx'
 import Home from '../pages/Home.jsx'
 import Account from '../pages/Account.jsx'
 import Build from '../pages/Build.jsx'
-import BuildLists from '../pages/build_subpages/Build_lists.jsx'
+import BuildPastLists from '../pages/build_subpages/BuildPastLists.jsx'
+import ListsDetails from '../pages/build_subpages/Build_lists_details.jsx'
 
 export default function Router() {
     const Layout = () => {
@@ -25,8 +26,8 @@ export default function Router() {
                     <Route path="/home" element={<Home />} />
                     <Route path="/account" element={<Account />} />
                     <Route path="/build" element={<Build />} />
-                    <Route path='/build/lists' element={BuildLists} />
-                    <Route path="/build/lists/:id" element={BuildLists} />
+                    <Route path='/build/pastlists' element={<BuildPastLists />} />
+                    <Route path="/build/pastlists/details/:id" element={<ListsDetails />} />
                 </Route>
             </Routes>
         </BrowserRouter>
