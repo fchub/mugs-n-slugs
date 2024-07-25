@@ -1,21 +1,62 @@
 const express = require('express')
 const router = express.Router()
+const schemas = require('../models/schemas.jsx')
 
-router.post('/contact', (req, res) => {
+//NEED async if there's an await
+//IF you need params in the /contact/ (eg. if different button/id for send vs. edit or soemthing)
+//:a for actions, in case there are multiple things you can do 
+router.post('/contact/:a', async(req, res) => {
     //same as const email = req.body.email...
     const {email, website, message} = req.body //taking the body of the post request from frontend
+    const action = req.params.a
 
-    console.log(email + ' | ' + website + ' | ' + message)
-    res.send('Message sent. Thank you!') //this is the message that is sent back
-    //look at Home.jsx for printing of {res.data} - response of data
+    switch(action) {
+        case "send": //if case is send, then we just send it
+            //NOW posting it/saving it to our contact_form db
+            //mapping values to schema values/table values
+            const contactData = {email: email, website: website, message: message}
+            const newContact = new schemas.Contact(contactData)
+            const saveContact = await newContact.save() //always do await when hosting URL or saving, anything that interacts
 
+            if (saveContact) {
+                res.send('Message sent. Thank you!') //this is the message that is sent back
+            } else {
+                res.send('Failed to send message. Server error')
+            }
+            //look at Home.jsx for printing of {res.data} - response of data
+            
+            
+        break;
+        default: 
+            res.send('Invalid request')
+            break
+
+    }
+    
+    res.end() //good to close it off
     //cannot see it on the website, cuz we're only doing a POST on it
     //GET is what displays the data!
 })
 
+//searching through contacts or data, using params (recall)
+//router.get('/contact/:id', (rez, res)) => ...
+
+//searching through contacts or data, and deleting or acting on that contact with id
+//router.get('/contact/:a/:id)...
+
 //so instead of doing all the Get and Post stuff in the index, do it here
-router.get('/users', (req, res) => {
-    //temporarily use JSON database
+router.get('/users', async(req, res) => {
+    //THIS is where database goes! so from the Schemas
+    const users = schemas.Users
+    
+    //can find anything in FIND
+    // const userData = await users.find({}).exec()
+    // if (userData) {
+    //     res.send(JSON.stringify(userData)) //thigs stringifies everything to JSON format, like below
+    //     //so can be called and used in the same way as the below
+    //     //no need to hard code the below
+    // }
+
     const userData = 
     [
         {

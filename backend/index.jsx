@@ -2,6 +2,8 @@ const express = require('express')
 const cors = require('cors') //allows us to access server from different domains
 const bodyParser = require('body-parser') //used for form posts
 const router = require('./routes/router.jsx')
+const mongoose = require('mongoose')
+require('dotenv/config')
 
 const app = express() //using node with express to run server
 
@@ -20,7 +22,14 @@ app.use(cors(corsOptions))
 app.use('/', router) //sets up router, instead of app.get and app.post
 //router MUST be at the very end, right here
 
-const port = 4000 //port to run backedn on, rather than 5173 (port of Vite frontend)
+//RIGHT before port, set up mongoose...so now all you need is connection stream in Mongoose
+const dbOptions = {useNewUrlParser:true, useUnifiedTopology:true}
+mongoose.connect(process.env.DB_URI, dbOptions)
+.then(() => console.log('DB Connected!'))
+.catch(err => console.log(err))
+
+//Why - to mask and hide important info (passwords, etc...)
+const port = process.env.PORT || 4000//USE the variable name in ENV file, or 4000 if env not there yet
 //need both ports to be running
 const server = app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
