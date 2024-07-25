@@ -5,7 +5,7 @@ import Home from '../pages/Home.jsx'
 import Account from '../pages/Account.jsx'
 import Build from '../pages/Build.jsx'
 import BuildPastLists from '../pages/build_subpages/BuildPastLists.jsx'
-import ListsDetails from '../pages/build_subpages/Build_lists_details.jsx'
+import ListsDetails from '../pages/build_subpages/BuildPastListsDetails.jsx'
 
 export default function Router() {
     const Layout = () => {

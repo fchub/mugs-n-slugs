@@ -1,13 +1,24 @@
-import { useState } from 'react' //saves values
+import { useState, useEffect } from 'react' //saves values
+import axios from 'axios'
 import React from 'react'
 
 const Home = () => {
-    //function that allows changing active state using True to False of above
+    //USEEFFECT ALWAYS processes first, it must run first by the time the application loads
+    //preloads, fetches data, using below fetchData
+    //known bug - it runs it twice, so to avoid...let processing...
+    useEffect( () => {
+        let processing = true
+        axiosFetchData(processing)
+        return () => {
+            processing = false
+        }
+    },[])
+    
+    //For the cards
     const [closeCard1, setCloseCard1] = useState(true)
     const [closeCard2, setCloseCard2] = useState(true)
     const [closeCard3, setCloseCard3] = useState(true)
     const [closeCard4, setCloseCard4] = useState(true)
-
     const handleCloseCard1= () => {
         setCloseCard1(!closeCard1) //changes it to opposite 
     }
@@ -21,21 +32,92 @@ const Home = () => {
         setCloseCard4(!closeCard4) //changes it to opposite 
     }
 
-
+    //FOR CONTACT US
+        //now saving the value that will be selected by the user
     const [email, setEmail] = useState('') //default value?
     const [message, setMessage] = useState('')
-    
+    const [error, setError] = useState('')
+    const [selectValue, setSelectValue] = useState('')
+
+    //saving the value brought in by JSON Placeholder
+    const [selectData, setSelectData] = useState([])
+
+    //fetch using React fetch
+    // const fetchData = async(processing) => {
+    //     //await for fetch to complete, at that url...can use our OWN DATABASE NOW!
+    //     await fetch('https://jsonplaceholder.typicode.com/users')
+    //     //then converts to json
+    //     .then(res => res.json())
+    //     //sets to selectData so we can use it, now the value is selectData
+    //     .then(data => {
+    //         if (processing) {
+    //             setSelectData(data)
+    //         }
+    //     })
+    //     .catch(err => console.log(err))
+    // }
+
+    //FETCH USING AXIOS
+    //async ensures you are able to complete rest of code while waiting to do certain code (like fetch)
+    const axiosFetchData = async(processing) => {
+         //await for axios to complete, at that url...can use our OWN DATABASE NOW!
+         //much clearer, and .get vs .post
+         //NOTE .post is used to submit forms to the server, while .get RETRIEVES info from server
+         //the post part is a ALOT less in axios, and runs a bit faster
+        //  const options = {
+        //     email: email,
+        //     selectValue: selectValue,
+        //     message: message,
+        //  }
+         await axios.get('https://jsonplaceholder.typicode.com/users')
+         //no need to convert to json!
+         //sets to selectData so we can use it, now the value is selectData
+         .then(res => {
+             if (processing) {
+                 setSelectData(res.data) //can directly go to res.data
+             }
+         })
+         .catch(err => console.log(err))
+    }
+
+    //putting all that information into this select drop-down menu
+    const SelectDropdown = () => {
+        return (
+            //give a value, every time it changes, it remembers that value, looks for  it in options, then SETS it
+            <select className='bg-white rounded-xl border-black border-[1px] py-1 px-2 text-sm font-light' 
+                value={selectValue} onChange={(e) => setSelectValue(e.target.value)}>
+                {
+                    //question mark ensures/checks that there is data
+                    selectData?.map( (item, index) => (
+                        //item.website refers to the data - item = person, website
+                        <option value={item.website} key={item.website}>{item.website}</option>
+                    ))
+                }
+            </select>
+        )
+    }
+
     //every change we make to email, it resets and sets email to the above variable email, saved to Value={email}
     const handleSubmit = (e) => {
         e.preventDefault() //says that we PREVENT default submit action, and that we do our own thing
         
-        console.log(email)
+        //error handling
+        if (!message || !email) {
+            setError(<p className='text-sm font-light text-red-500 place-self-center'>Message and/or email is empty. Please fill both in.</p>)
+        } else {
+            setError('')
+        }
+
+        if (!error){
+            console.log(email + " | " + selectValue)
+        }
+        //process whatever you want! - which is basically axios POST
     }
     
     return (
         <>
             <div className='position: absolute top-[64px] font-serif w-[100%]'> {/*main content container*/}
-                {/*about Content container*/}
+                {/*home Content container*/}
                 <div className="flex flex-col items-center w-[100%]">
                     {/*title Container*/}
                     <div className={`flex flex-col w-[100%] h-96 items-center justify-start \
@@ -161,21 +243,28 @@ const Home = () => {
                     </div>
                     
                     {/*contact us container*/}
-                    <div className='flex flex-col w-[100%] h-[30rem] items-center justify-center \
-                        bg-dryingClothes bg-no-repeat bg-cover bg-center'>                        
+                    <div className='flex flex-col w-[100%] h-[40rem] items-center justify-center \
+                        bg-dryingClothes bg-no-repeat bg-cover bg-center' id="contact-us">                        
                         <form className={`flex flex-col space-y-4 bg-white opacity-95 py-8 px-6 rounded-xl \
                             w-96 h-auto`}>
-                            <h1 className={`font-serif font-bold text-xl p-2 place-self-center`}>Contact Us</h1>
+                            <h1 className={`font-serif font-bold text-3xl p-2 place-self-center`}>Contact Us</h1>
 
                             <div className='flex flex-col'>
                                 <label>Email</label>
                                 <input className='bg-white rounded-xl py-1 px-2 border-black border-[1px]' type="text" id="email" name="email" value={email} onChange={ (e) => setEmail(e.target.value)}/>
                             </div>
+
+                            <div className='flex flex-col'>
+                                <label>How did you hear about us?</label>
+                                {/*uses data from JSON Placeholder*/}
+                                <SelectDropdown />
+                            </div>
                             
                             <div className='flex flex-col'>
                                 <label>Message</label>
-                                <textarea className='bg-white  rounded-xl py-1 px-2 h-40 border-black border-[1px]'  
+                                <textarea className='bg-white  rounded-xl py-1 px-2 h-40 border-black border-[1px] text-sm'  
                                     id="message" name="message" value={message} onChange={ (e) => setMessage(e.target.value)}></textarea>
+                                {error}
                             </div>
                             <button className={`border-blue-500 border-[1px] rounded-xl w-28 py-1 place-self-center \
                                 text-blue-700 text-sm`} type="submit" onClick={handleSubmit}>Submit</button>
