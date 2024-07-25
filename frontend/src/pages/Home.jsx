@@ -69,7 +69,7 @@ const Home = () => {
         //     selectValue: selectValue,
         //     message: message,
         //  }
-         await axios.get('https://jsonplaceholder.typicode.com/users')
+         await axios.get('http://localhost:4000/users') //now using OUR data
          //no need to convert to json!
          //sets to selectData so we can use it, now the value is selectData
          .then(res => {
@@ -78,6 +78,18 @@ const Home = () => {
              }
          })
          .catch(err => console.log(err))
+    }
+
+    //POSTING data now
+    const axiosPostData = async() => {
+        const postData = {
+            email: email,
+            website: selectValue,
+            message: message
+        }
+
+        await axios.post('http://localhost:4000/contact', postData)
+        .then(res => setError(<p className={`text-sm font-light text-green-700 place-self-center`}>{res.data}</p>))//confirms that the message was saved
     }
 
     //putting all that information into this select drop-down menu
@@ -108,10 +120,8 @@ const Home = () => {
             setError('')
         }
 
-        if (!error){
-            console.log(email + " | " + selectValue)
-        }
-        //process whatever you want! - which is basically axios POST
+        setError('')
+        axiosPostData()
     }
     
     return (
