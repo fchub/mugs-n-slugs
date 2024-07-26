@@ -155,12 +155,14 @@ const Home = () => {
 
                                     {/*card front*/}
                                     <div className='position: absolute flex w-[100%] h-[100%] rounded-2xl bg-[#076407] items-center justify-center font-bold text-4xl [backface-visibility:hidden]'>
-                                        <h1>Info</h1>
+                                        <h1 className='text-golden-yellow'>Info</h1>
                                     </div>
 
                                     {/*card back*/}
                                     <div className='position: absolute flex w-[100%] h-[100%] rounded-2xl bg-[#aeae0b52] [transform:rotateY(180deg)] [backface-visibility:hidden]'>
-                                        <p>We are a few campers that</p>
+                                        <p>Don't need to figure out who has what item! Have you collaborators directly
+                                            plug in their own have and needs list!
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -178,7 +180,7 @@ const Home = () => {
 
                                     {/*card front*/}
                                     <div className='position: absolute flex w-[100%] h-[100%] rounded-2xl bg-[#076407] items-center text-center justify-center font-bold text-4xl [backface-visibility:hidden]'>
-                                        <h1>How it works</h1>
+                                        <h1 className='text-golden-yellow'>How it works</h1>
                                     </div>
 
                                     {/*card back*/}
@@ -196,7 +198,7 @@ const Home = () => {
                         </div> 
 
                         {/*Card Row*/}
-                        <div className='flex flex-row items-center justify-center w-[90%] pt-[1.5rem]'>
+                        <div className='flex flex-row items-center justify-center w-[90%] pt-[1.5rem] pb-16'>
                             
                             {/*card*/}
                             <div className='m-[1.5rem] w-[20rem] h-[20rem] rounded-2xl [perspective:1000px] cursor-pointer'>
@@ -211,7 +213,7 @@ const Home = () => {
 
                                     {/*card front*/}
                                     <div className='position: absolute flex w-[100%] h-[100%] rounded-2xl bg-[#076407] items-center justify-center text-center font-bold text-4xl [backface-visibility:hidden]'>
-                                        <h1>What it looks like</h1>
+                                        <h1 className='text-golden-yellow'>What it looks like</h1>
                                     </div>
 
                                     {/*card back*/}
@@ -234,7 +236,7 @@ const Home = () => {
 
                                     {/*card front*/}
                                     <div className='position: absolute flex w-[100%] h-[100%] rounded-2xl bg-[#076407] items-center justify-center font-bold text-4xl [backface-visibility:hidden]'>
-                                        <h1>Profile</h1>
+                                        <h1 className='text-golden-yellow'>Collaborate</h1>
                                     </div>
 
                                     {/*card back*/}

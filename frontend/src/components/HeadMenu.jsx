@@ -108,7 +108,7 @@ export function HeadMenu() {
                   </a>
                   <hr className={`border-gray-300 place-self-center w-44 \
                     ${userData.loggedIn === true ? "hidden" : ""}`}></hr>
-                  <a className='mx-2 my-1' href='/account'>
+                  <a className='mx-2 my-1' href={`${userData.loggedIn === true ? "/account" : "/build"}`}>
                     <li className='py-1 px-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
                       Profile
                     </li>

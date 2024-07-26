@@ -7,7 +7,7 @@ function App() {
   const userInfo = {
     name: "Frank",
     email: "fycfyc741@gmail.com",
-    loggedIn: true,
+    loggedIn: false,
     pastLists: 4,
     friends: 11,
   }

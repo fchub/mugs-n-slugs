@@ -8,7 +8,15 @@ export default {
       backgroundImage: {
         'unpackedGround': "url('./src/assets/Algonquin2021Unpacked2.0.jpeg')",
         'dryingClothes': "url('./src/assets/Killarney2023dryingclothes.jpeg')",
+        'silverPeakView': "url('./src/assets/Killarney2023SilverPeak.jpeg')",
+        'snail': "url('.src/assets/CartoonSnailOnlinePic.png')",
       },
+      colors: {
+        'forest-green': '#076407',
+        'golden-yellow': '#AEAE0B',
+        'select-yellow': '#aeae0b52',
+        'select-green': '#31652b52'
+      }
     }
   },
   plugins: [],
