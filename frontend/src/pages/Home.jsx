@@ -137,7 +137,7 @@ const Home = () => {
                     </div>
 
                     {/*Card Container*/}
-                    <div id='home_info' className='flex items-center justify-center flex-col w-[100%]'>
+                    <div id='home_info' className='flex items-center justify-center flex-col w-[100%] bg-snail bg-repeat'>
                         
                         {/*Card Row*/}
                         <div className='flex flex-row items-center justify-center w-[90%] pt-16'>
@@ -258,7 +258,7 @@ const Home = () => {
                     <div className='flex flex-col w-[100%] h-[40rem] items-center justify-center \
                         bg-dryingClothes bg-no-repeat bg-cover bg-center' id="contact-us">                        
                         <form className={`flex flex-col space-y-4 bg-white opacity-95 py-8 px-6 rounded-xl \
-                            w-96 h-auto`}>
+                            w-96 h-auto backdrop-blur-lg`}>
                             <h1 className={`font-serif font-bold text-3xl p-2 place-self-center`}>Contact Us</h1>
 
                             <div className='flex flex-col'>

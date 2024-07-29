@@ -154,7 +154,7 @@ export function HeadMenu() {
                     </li>
                   </a>
                   <hr className='border-gray-300 place-self-center w-44'></hr>
-                  <a className='mx-2 my-1'  href='/home#home-info'>
+                  <a className='mx-2 my-1'  href='/home#home_info'>
                     <li className='py-1 px-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
                       Info
                     </li>

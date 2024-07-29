@@ -3,11 +3,12 @@ import { HeadMenu } from './HeadMenu.jsx'
 import { Footer } from './Footer.jsx'
 import Home from '../pages/Home.jsx'
 import Account from '../pages/Account.jsx'
+import SignIn from '../pages/account_subpages/SignIn.jsx'
 import Build from '../pages/Build.jsx'
 import BuildPastLists from '../pages/build_subpages/BuildPastLists.jsx'
 import ListsDetails from '../pages/build_subpages/BuildPastListsDetails.jsx'
 
-export default function Router() {
+export default function Router() {    
     const Layout = () => {
         return (
           <>
@@ -25,6 +26,7 @@ export default function Router() {
                     <Route path="/" element={<Home />} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/account" element={<Account />} />
+                    <Route path="/account/signin" element={<SignIn />} />
                     <Route path="/build" element={<Build />} />
                     <Route path='/build/pastlists' element={<BuildPastLists />} />
                     <Route path="/build/pastlists/details/:id" element={<ListsDetails />} />
