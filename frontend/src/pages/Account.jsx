@@ -25,10 +25,12 @@ const Account = () => {
                                 Sign In
                             </button>
                         </a>
-                        <button className={`p-2 border-black border-1 bg-white rounded-xl \
-                            opacity-60 w-32 shadow-xl hover:shadow-2xl hover:opacity-100`}>
-                            Make account
-                        </button>
+                        <a href='/account/makeaccount'>
+                            <button className={`p-2 border-black border-1 bg-white rounded-xl \
+                                opacity-60 w-32 shadow-xl hover:shadow-2xl hover:opacity-100`}>
+                                Make account
+                            </button>
+                        </a>
                     </div>
                 </div>
             

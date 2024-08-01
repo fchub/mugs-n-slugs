@@ -9,7 +9,7 @@ export default {
         'unpackedGround': "url('./src/assets/Algonquin2021Unpacked2.0.jpeg')",
         'dryingClothes': "url('./src/assets/Killarney2023dryingclothes.jpeg')",
         'silverPeakView': "url('./src/assets/Killarney2023SilverPeak.jpeg')",
-        'snail': "url('.src/assets/MnSLogo.png')",
+        'canoeLake': "url('./src/assets/Algonquin2021CanoeLake.jpeg')",
       },
       colors: {
         'forest-green': '#076407',
