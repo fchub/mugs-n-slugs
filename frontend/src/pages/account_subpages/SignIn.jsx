@@ -49,7 +49,7 @@ const SignIn = () => {
             <div className={`position: absolute top-[64px] flex flex-col h-[calc(100%-64px)] w-[100%] justify-center items-center`}>
                 <div className={`flex flex-col justify-center items-center w-[100%] h-[100%]\
                     bg-[url('../../src/assets/Algonquin2021CanoeLake.jpeg')] bg-no-repeat bg-cover bg-center`}>
-                    <form className = {`flex flex-col w-96 rounded-xl shadow-black shadow-lg \
+                    <form for='signin' className = {`flex flex-col w-96 rounded-xl shadow-black shadow-lg \
                         font-serif py-8 px-6 h-auto space-y-3 bg-white`}>
                         <h1 className={`font-serif font-medium text-2xl p-1 place-self-center`}>Sign in</h1>
 
@@ -60,7 +60,7 @@ const SignIn = () => {
 
                         <div className='flex flex-col'>
                             <input className='bg-white py-1 px-2 mx-2 border-b-black border-b-[1px] text-sm' placeholder='Password'
-                               type='password' id='password' name='password' value={password} onChange={ (e) => setPassword(e.target.value)} />
+                               type='password' id='password' name='password' value={password} onChange={ (e) => setPassword(e.target.value)} autoComplete='current-password' />
                             <a className='text-xs place-self-center text-golden-yellow' href='/account'>Forgotten password?</a>
                         </div>
                         {statMessage}
