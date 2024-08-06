@@ -26,7 +26,7 @@ app.use('/', router) //sets up router, instead of app.get and app.post
 const dbOptions = {useNewUrlParser:true, useUnifiedTopology:true}
 mongoose.connect(process.env.DB_URI, dbOptions)
 .then(() => console.log('DB Connected!'))
-.catch(err => console.log(err))
+.catch(err => console.log('ERROR! ' + err))
 
 //Why - to mask and hide important info (passwords, etc...)
 const port = process.env.PORT || 4000//USE the variable name in ENV file, or 4000 if env not there yet

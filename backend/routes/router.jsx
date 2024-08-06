@@ -2,16 +2,41 @@ const express = require('express')
 const router = express.Router()
 const schemas = require('../models/schemas.jsx')
 
+//testing users
+router.post('/usertest', async(req, res) => {
+  //same as const email = req.body.email...
+  const {firstName, lastName, userName, email, password, country, campStyle, dob} = req.body //taking the body of the post request from frontend
+
+  //NOW posting it/saving it to our contact_form db
+  //mapping values to schema values/table values
+  const userTestData = {firstName: firstName, lastName: lastName, userName: userName, email: email, password: password, country: country, campStyle: campStyle, dob: dob}
+  const newUserTest = new schemas.UserTest(userTestData)
+  const saveUserTest = await newUserTest.save() //always do await when hosting URL or saving, anything that interacts
+
+  if (saveUserTest) {
+      res.send('Your account was made!') //this is the message that is sent back
+  } else {
+      res.send('Failed to create a new account - server error. Please try again later.')
+  }
+  //look at Home.jsx for printing of {res.data} - response of data
+
+  res.end() //good to close it off
+  //cannot see it on the website, cuz we're only doing a POST on it
+  //GET is what displays the data!
+})
+
+
 //NEED async if there's an await
 //IF you need params in the /contact/ (eg. if different button/id for send vs. edit or soemthing)
 //:a for actions, in case there are multiple things you can do 
-router.post('/contact/:a', async(req, res) => {
+router.post('/contact', async(req, res) => {
     //same as const email = req.body.email...
     const {email, website, message} = req.body //taking the body of the post request from frontend
-    const action = req.params.a
+    //const action = req.params.a
 
-    switch(action) {
-        case "send": //if case is send, then we just send it
+    //switch(action) { //for passing params, for different actions (e.g. send vs. update?? idk)
+                        // in this current form, it does'nt work, as case must be specified
+        //case "send": //if case is send, then we just send it
             //NOW posting it/saving it to our contact_form db
             //mapping values to schema values/table values
             const contactData = {email: email, website: website, message: message}
@@ -26,12 +51,12 @@ router.post('/contact/:a', async(req, res) => {
             //look at Home.jsx for printing of {res.data} - response of data
             
             
-        break;
-        default: 
-            res.send('Invalid request')
-            break
+        //break;
+        //default: 
+        //    res.send('Invalid request')
+        //    break
 
-    }
+    //}
     
     res.end() //good to close it off
     //cannot see it on the website, cuz we're only doing a POST on it

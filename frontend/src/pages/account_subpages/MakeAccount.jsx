@@ -13,13 +13,31 @@ const MakeAccount = () => {
     const [emailR, setEmailR] = useState('')
     const [password, setPassword] = useState('')
     const [passwordR, setPasswordR] = useState('')
-    const [type, setType] = useState('password')
-    const [icon, setIcon] = useState(eyeOff)
+    const [type, setType] = useState('password') //for eyeoff password
+    const [icon, setIcon] = useState(eyeOff) //for password eye
     const [passwordStatus, setPasswordStatus] = useState(false)
     const [country, setCountry] = useState('')
     const [campStyle, setCampStyle] = useState('')
+    const [dob, setDob] = useState('')
     const [statMessage, setStatMessage] = useState('')
     
+    const axiosPostData = async() => {
+        const postData = {
+            firstName: firstName,
+            lastName: lastName,
+            userName: userName,
+            email: email,
+            password: password,
+            country: country,
+            campStyle: campStyle,
+            dob: dob,
+        }
+
+        await axios.post('http://localhost:4000/usertest', postData)
+        .then(res => setStatMessage(<p className={`text-sm font-light text-green-700 place-self-center`}>{res.data}</p>))
+    }
+
+    //for toggle password
     const handleToggle = () => {
         if (type==='password') {
             setIcon(eye)
@@ -30,12 +48,68 @@ const MakeAccount = () => {
         }
     }
 
+    function validateEmail(email, emailR) {
+        var validRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        let val=false
+        if(validRegex.test(email) === false || email != emailR) {
+            val = false
+        } else {
+            val = true
+        }
+        return val
+    }
+
+    function validatePassword(password, passwordR) {
+        let val = false
+        if(password != passwordR || password.length < 8 || /[A-Z]/.test(password) === false || /[a-z]/.test(password) === false || /\d/.test(password) === false || /[^A-za-z0-9]/.test(password) === false) {
+            val = false
+        } else {
+            val = true     
+        }
+
+        return val
+    }
+
+    //won't use for now
+    function getAge (dateString) {
+        var today = new Date()
+        var birthDate = new Date(dateString)
+        var age = today.getFullYear() - birthDate.getFullYear()
+        var m = today.getMonth() - birthDate.getMonth()
+        if(m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        
+        //check if valid
+        if(!firstName || !lastName || !userName || !email || !password) {
+            setStatMessage(<p className='text-xs font-light text-red-500 place-self-center text-center'>
+                You must fill in all required account info to proceed.
+                </p>)
+            console.log('error')
+        } else {
+            setStatMessage('')
 
-        console.log("hlello")
+            if(validateEmail(email, emailR) === false) {
+                setStatMessage(<p className='text-xs font-light text-red-500 place-self-center text-center'>
+                    Please input a valid email address
+                    </p>)
+                console.log('error')
+            } else if (validatePassword(password, passwordR) === false) {
+                setStatMessage(<p className='text-xs font-light text-red-500 place-self-center text-center'>
+                    Please input a valid password
+                    </p>)
+                console.log('error')
+            } else {
+                setStatMessage('')
+                console.log(email + password)
+                axiosPostData()
+            }
+        }
     }
     
     return (
@@ -55,7 +129,7 @@ const MakeAccount = () => {
                             </div>
                         </div>
                             
-                            {/*Row for name and username*/}
+                        {/*Row for name and username*/}
                         <div className='flex flex-row w-[100%] space-x-[2rem] items-center text-center justify-center mx-[2rem]'>
                             <input className={`bg-white w-[calc(40rem/3)] py-1 px-1 border-b-black border-b-[1px] text-sm`} type="text" placeholder="First name" 
                                 id="firstName" name="firstName" value={firstName} onChange={ (e) => setFirstName(e.target.value)}/>
@@ -79,7 +153,7 @@ const MakeAccount = () => {
                             <div className='flex flex-row w-[100%] space-x-[2rem] items-center text-center justify-center'>
                                 <input className={`bg-white w-[calc(38rem/2)] py-1 px-1 border-b-black border-b-[1px] text-sm`} type={type} placeholder="User password" 
                                     id="password" name="password" value={password} onChange={ (e) => setPassword(e.target.value)}/>
-                                <span className='flex justify-around items-center' onClick={handleToggle}>
+                                <span className='flex justify-around items-center hover:cursor-pointer' onClick={handleToggle}>
                                     <Icon className='absolute' icon={icon} size={20}/>
                                 </span>
                                 <input className={`bg-white w-[calc(42rem/2)] py-1 px-2 border-b-black border-b-[1px] text-sm`} type="password" placeholder="Re-enter your password" 
@@ -97,6 +171,7 @@ const MakeAccount = () => {
 
                         <hr className={`border-gray-300 place-self-center w-[52rem] m-0`}></hr>   
 
+                        {/*user survey*/}
                         <div className='flex flex-col justify-center items-center mx-[2rem]'>
                             <h2 className='text-sm place-self-start'>User survey</h2>
                             <div className='flex flex-row w-[100%] space-x-[2rem] items-center text-center justify-center'>
@@ -358,6 +433,17 @@ const MakeAccount = () => {
                                 </select>
                             </div>
                         </div>
+
+                        {/*Age survey */}
+                        <div className='flex flex-row w-[100%] space-x-[2rem] items-center text-center justify-center mx-[2rem]'>
+                            <p className={`bg-white w-[calc(42rem/2)] py-1 px-1 text-sm text-left`} >
+                                Input your date of birth: 
+                            </p>
+                            <input className={`bg-white w-[calc(42rem/2)] py-1 px-1 border-b-black border-b-[1px] text-sm`} type="date" placeholder="Date of birth" 
+                                id="dob" name="dob" value={dob} onChange={ (e) => setDob(e.target.value)}/>
+                        </div>
+
+                        {statMessage}
 
                         <button className={`border-blue-500 border-[1px] rounded-xl w-28 py-1 place-self-center \
                             text-blue-700 text-sm`} type='submit' onClick={handleSubmit}>
