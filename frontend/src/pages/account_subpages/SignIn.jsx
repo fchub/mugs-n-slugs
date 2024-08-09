@@ -1,24 +1,81 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import {Icon} from 'react-icons-kit'
+import {eyeOff} from 'react-icons-kit/feather/eyeOff'
+import {eye} from 'react-icons-kit/feather/eye'
 
 const SignIn = () => {
-    /*useEffect( () => {
+    //NEW FOR SIGN IN
+    useEffect( () => {
         let processing = true
         axiosFetchData(processing)
         return () => {
             processing = false
         }
-    },[]) */
+    },[])
     
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    //for eye button
+    const [type, setType] = useState('password') //for eyeoff password
+    const [icon, setIcon] = useState(eyeOff) //for password eye
+
     const [statMessage, setStatMessage] = useState('')
+
+    //NEW FOR SIGN IN
+    const [dataCheck, setDataCheck] = useState('')
+
+
+    const handleToggle = () => {
+        if (type==='password') {
+            setIcon(eye)
+            setType('text')
+        } else {
+            setIcon(eyeOff)
+            setType('password')
+        }
+    }
 
     //validating email address
     function ValidateEmail(email) {
-        var validRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        const validRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
         return validRegex.test(email)
+    }
+
+    //NEW FOR SIGN IN
+    const axiosFetchData = async(processing) => {
+        await axios.get('http://localhost:4000/usertest')
+        .then(res => {
+            if(processing) {
+                setDataCheck(res.data)
+            }
+        })
+        .catch(err => console.log(err))
+        console.log("hello")
+    }
+
+    //NEW FOR SIGN IN
+    const validateUser = (userEmail, userPass) => {
+        let emailVal = false
+        let passVal = false
+        
+        for (let i=0; i < dataCheck.length; i++)
+        {
+            if (dataCheck[i].email === userEmail) {
+                emailVal = true
+                if (dataCheck[i].password === userPass) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+        }
+
+        if (emailVal === false) {
+            return false
+        }
     }
     
     const handleSubmit = (e) => {
@@ -39,6 +96,15 @@ const SignIn = () => {
             } else {
                 setStatMessage('')
                 console.log(email + password)
+                if(validateUser(email, password) === true) {
+                    setStatMessage(<p className='text-sm font-light text-green-700 place-self-center text-center'>
+                        You have successfully logged in.
+                        </p>)
+                } else {
+                    setStatMessage(<p className='text-sm font-light text-red-500 place-self-center text-center'>
+                        Wrong user email or password. Please try again.
+                        </p>)
+                }
             }
         }
 
@@ -59,8 +125,13 @@ const SignIn = () => {
                         </div>
 
                         <div className='flex flex-col'>
-                            <input className='bg-white py-1 px-2 mx-2 border-b-black border-b-[1px] text-sm' placeholder='Password'
-                               type='password' id='password' name='password' value={password} onChange={ (e) => setPassword(e.target.value)} autoComplete='current-password' />
+                            <div className='flex flex-row'>
+                                <input className='bg-white py-1 px-2 mx-2 border-b-black border-b-[1px] text-sm w-[calc(100%-50px)]' placeholder='Password'
+                               type={type} id='password' name='password' value={password} onChange={ (e) => setPassword(e.target.value)} autoComplete='current-password' />
+                                <span className='justify-right hover:cursor-pointer' onClick={handleToggle}>
+                                    <Icon className='absolute' icon={icon} size={20}/>
+                                </span>
+                            </div>
                             <a className='text-xs place-self-center text-golden-yellow' href='/account'>Forgotten password?</a>
                         </div>
                         {statMessage}

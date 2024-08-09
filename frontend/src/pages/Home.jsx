@@ -137,7 +137,7 @@ const Home = () => {
                     </div>
 
                     {/*Card Container*/}
-                    <div id='home_info' className='flex items-center justify-center flex-col w-[100%] bg-snail bg-repeat'>
+                    <div id='home_info' className='flex items-center justify-center flex-col w-[100%] bg-mnsLogo bg-repeat bg-cover bg-center'>
                         
                         {/*Card Row*/}
                         <div className='flex flex-row items-center justify-center w-[90%] pt-16'>

@@ -10,6 +10,7 @@ export default {
         'dryingClothes': "url('./src/assets/Killarney2023dryingclothes.jpeg')",
         'silverPeakView': "url('./src/assets/Killarney2023SilverPeak.jpeg')",
         'canoeLake': "url('./src/assets/Algonquin2021CanoeLake.jpeg')",
+        'mnsLogo': "url('.src/assets/MnSLogo.pns')"
       },
       colors: {
         'forest-green': '#076407',

@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const schemas = require('../models/schemas.jsx')
+const schemas = require('../models/schemas.js')
 
 //testing users
 router.post('/usertest', async(req, res) => {
@@ -23,6 +23,24 @@ router.post('/usertest', async(req, res) => {
   res.end() //good to close it off
   //cannot see it on the website, cuz we're only doing a POST on it
   //GET is what displays the data!
+})
+
+//NEW FOR SIGN IN
+router.get('/usertest', async(req, res) => {
+  //THIS is where database goes! so from the Schemas
+  const userTest = schemas.UserTest
+  const userTestData = await userTest.find({}).exec()
+  if(userTestData) {
+    res.send(JSON.stringify(userTestData))
+  }
+  
+  //can find anything in FIND
+  // const userData = await users.find({}).exec()
+  // if (userData) {
+  //     res.send(JSON.stringify(userData)) //thigs stringifies everything to JSON format, like below
+  //     //so can be called and used in the same way as the below
+  //     //no need to hard code the below
+  // }
 })
 
 

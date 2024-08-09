@@ -49,7 +49,7 @@ const MakeAccount = () => {
     }
 
     function validateEmail(email, emailR) {
-        var validRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        const validRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
         let val=false
         if(validRegex.test(email) === false || email != emailR) {
             val = false
@@ -72,10 +72,10 @@ const MakeAccount = () => {
 
     //won't use for now
     function getAge (dateString) {
-        var today = new Date()
-        var birthDate = new Date(dateString)
-        var age = today.getFullYear() - birthDate.getFullYear()
-        var m = today.getMonth() - birthDate.getMonth()
+        const today = new Date()
+        const birthDate = new Date(dateString)
+        const age = today.getFullYear() - birthDate.getFullYear()
+        const m = today.getMonth() - birthDate.getMonth()
         if(m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
             age--;
         }
