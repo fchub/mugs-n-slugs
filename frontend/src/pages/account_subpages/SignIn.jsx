@@ -1,9 +1,10 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import axios from 'axios'
 import {Icon} from 'react-icons-kit'
 import {eyeOff} from 'react-icons-kit/feather/eyeOff'
 import {eye} from 'react-icons-kit/feather/eye'
+import UserContext from '../../components/UserContext.jsx'
+import { useNavigate } from 'react-router-dom'
 
 const SignIn = () => {
     //NEW FOR SIGN IN
@@ -24,9 +25,13 @@ const SignIn = () => {
 
     const [statMessage, setStatMessage] = useState('')
 
+    const navigate = useNavigate()
+
     //NEW FOR SIGN IN
     const [dataCheck, setDataCheck] = useState('')
-
+    
+    //UserContext stuff
+    const { firstName, setFirstName } = useContext(UserContext)
 
     const handleToggle = () => {
         if (type==='password') {
@@ -53,28 +58,26 @@ const SignIn = () => {
             }
         })
         .catch(err => console.log(err))
-        console.log("hello")
     }
 
     //NEW FOR SIGN IN
     const validateUser = (userEmail, userPass) => {
         let emailVal = false
-        let passVal = false
         
         for (let i=0; i < dataCheck.length; i++)
         {
             if (dataCheck[i].email === userEmail) {
                 emailVal = true
                 if (dataCheck[i].password === userPass) {
-                    return true
+                    return i
                 } else {
-                    return false
+                    return ''
                 }
             }
         }
 
         if (emailVal === false) {
-            return false
+            return ''
         }
     }
     
@@ -96,14 +99,17 @@ const SignIn = () => {
             } else {
                 setStatMessage('')
                 console.log(email + password)
-                if(validateUser(email, password) === true) {
-                    setStatMessage(<p className='text-sm font-light text-green-700 place-self-center text-center'>
-                        You have successfully logged in.
-                        </p>)
-                } else {
+                const valUser = validateUser(email, password)
+                if(!valUser) {
                     setStatMessage(<p className='text-sm font-light text-red-500 place-self-center text-center'>
                         Wrong user email or password. Please try again.
                         </p>)
+                } else {
+                    //Context stuff
+                    setFirstName(dataCheck[valUser].firstName)
+                    console.log(dataCheck[valUser].firstName)
+
+                    navigate('/account/signin/success')
                 }
             }
         }
@@ -115,7 +121,7 @@ const SignIn = () => {
             <div className={`position: absolute top-[64px] flex flex-col h-[calc(100%-64px)] w-[100%] justify-center items-center`}>
                 <div className={`flex flex-col justify-center items-center w-[100%] h-[100%]\
                     bg-[url('../../src/assets/Algonquin2021CanoeLake.jpeg')] bg-no-repeat bg-cover bg-center`}>
-                    <form for='signin' className = {`flex flex-col w-96 rounded-xl shadow-black shadow-lg \
+                    <form htmlFor='signin' className = {`flex flex-col w-96 rounded-xl shadow-black shadow-lg \
                         font-serif py-8 px-6 h-auto space-y-3 bg-white`}>
                         <h1 className={`font-serif font-medium text-2xl p-1 place-self-center`}>Sign in</h1>
 

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useContext } from 'react'
-import Context from './Context.jsx'
+import Context from './UserContext.jsx'
 
 const SideNav = () => {
     const location = useLocation() //for changing which thing is highlighted

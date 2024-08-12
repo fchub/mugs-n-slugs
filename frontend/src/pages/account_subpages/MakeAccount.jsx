@@ -4,6 +4,7 @@ import {Icon} from 'react-icons-kit'
 import {eyeOff} from 'react-icons-kit/feather/eyeOff'
 import {eye} from 'react-icons-kit/feather/eye'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const MakeAccount = () => {
     const [firstName, setFirstName] = useState('')
@@ -19,7 +20,10 @@ const MakeAccount = () => {
     const [country, setCountry] = useState('')
     const [campStyle, setCampStyle] = useState('')
     const [dob, setDob] = useState('')
-    const [statMessage, setStatMessage] = useState('')
+    const [loggedIn, setLoggedIn] = useState(false)
+    const [statMessage, setStatMessage] = useState(false)
+
+    const navigate = useNavigate()
     
     const axiosPostData = async() => {
         const postData = {
@@ -31,6 +35,7 @@ const MakeAccount = () => {
             country: country,
             campStyle: campStyle,
             dob: dob,
+            loggedIn: loggedIn,
         }
 
         await axios.post('http://localhost:4000/usertest', postData)
@@ -107,7 +112,10 @@ const MakeAccount = () => {
             } else {
                 setStatMessage('')
                 console.log(email + password)
+                setLoggedIn(false)
                 axiosPostData()
+
+                navigate('/account/makeaccount/success')
             }
         }
     }

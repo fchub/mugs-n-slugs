@@ -5,11 +5,11 @@ const schemas = require('../models/schemas.js')
 //testing users
 router.post('/usertest', async(req, res) => {
   //same as const email = req.body.email...
-  const {firstName, lastName, userName, email, password, country, campStyle, dob} = req.body //taking the body of the post request from frontend
+  const {firstName, lastName, userName, email, password, country, campStyle, dob, loggedIn} = req.body //taking the body of the post request from frontend
 
   //NOW posting it/saving it to our contact_form db
   //mapping values to schema values/table values
-  const userTestData = {firstName: firstName, lastName: lastName, userName: userName, email: email, password: password, country: country, campStyle: campStyle, dob: dob}
+  const userTestData = {firstName: firstName, lastName: lastName, userName: userName, email: email, password: password, country: country, campStyle: campStyle, dob: dob, loggedIn: loggedIn}
   const newUserTest = new schemas.UserTest(userTestData)
   const saveUserTest = await newUserTest.save() //always do await when hosting URL or saving, anything that interacts
 

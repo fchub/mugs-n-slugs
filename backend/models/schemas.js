@@ -20,7 +20,8 @@ const userTestSchema = new Schema( {
     country: {type:String},
     campStyle: {type:String},
     dob: {type:Date},
-    entryDate: {type:Date, default:Date.now}
+    entryDate: {type:Date, default:Date.now},
+    loggedIn: {type:Boolean}
 })
 
 //for contact form

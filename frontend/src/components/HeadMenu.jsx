@@ -1,9 +1,7 @@
 import mugsLogo from '../assets/MnSLogo.png'
 import { useLocation } from 'react-router-dom'
-import { useState } from 'react'
-import React from 'react'
-import { useContext } from 'react'
-import Context from './Context.jsx'
+import React, { useState, useContext } from 'react'
+import UserContext from './UserContext.jsx'
 
 export function HeadMenu() {
   const location = useLocation() //for changing which thing is highlighted
@@ -22,7 +20,7 @@ export function HeadMenu() {
     setDrop3(!closeDrop3)
   }
 
-  const userData = useContext(Context) //context from App, that we created, context provi8der
+  const userInfo = useContext(UserContext) //context from App, that we created, context provi8der
 
   return (
       <div className="bg-white position: fixed z-30 w-full h-16 flex items-center shadow-xl">
@@ -50,7 +48,7 @@ export function HeadMenu() {
                 <div className={`justify-center items-center text-center w-[100%] h-auto \
                   font-serif font-medium text-md py-1 m-0 flex-wrap\
                   ${closeDrop1 === true ? "opacity-0" : ""}`}>
-                  <h1>You have made {userData.pastLists} lists</h1>
+                  <h1>You have made NUM lists</h1>
                 </div>
                 <hr className={`border-gray-300 place-self-center w-[100%] \
                   ${closeDrop1 === true ? "opacity-0" : ""}`}></hr>
@@ -94,21 +92,21 @@ export function HeadMenu() {
                 <div className={`justify-center items-center text-center w-[100%] h-auto \
                   font-serif font-medium text-lg py-1 m-0\
                   ${closeDrop2 === true ? "opacity-0" : ""}`}>
-                  <h1>Hello, {userData.name}</h1>
-                  <h3 className={`font-thin text-xs`}>{userData.email}</h3>
+                  <h1>Hello, {userInfo.firstName}</h1>
+                  <h3 className={`font-thin text-xs`}>EMAIL</h3>
                 </div>
                 <hr className={`border-gray-300 place-self-center w-[100%] \
                   ${closeDrop2 === true ? "opacity-0" : ""}`}></hr>
                 <ul className={`font-serif font-thin text-sm flex flex-col pb-2 pt-0 pr-2 pl-2 list-none m-0\
                   ${closeDrop2 === true ? "opacity-0" : ""}`}>
-                  <a className={`mx-2 my-1 ${userData.loggedIn === true ? "hidden" : ""}`} href='/account'>
+                  <a className={`mx-2 my-1 ${userInfo.loggedIn === true ? "hidden" : ""}`} href='/account'>
                     <li className='py-1 px-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
                       Sign-in/Make an account
                     </li>
                   </a>
                   <hr className={`border-gray-300 place-self-center w-44 \
-                    ${userData.loggedIn === true ? "hidden" : ""}`}></hr>
-                  <a className='mx-2 my-1' href={`${userData.loggedIn === true ? "/account" : "/build"}`}>
+                    ${userInfo.loggedIn === true ? "hidden" : ""}`}></hr>
+                  <a className='mx-2 my-1' href={`${userInfo.loggedIn === true ? "/account" : "/build"}`}>
                     <li className='py-1 px-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
                       Profile
                     </li>
@@ -126,7 +124,7 @@ export function HeadMenu() {
                     </li>
                   </a>
                   <hr className='border-gray-300 place-self-center w-44'></hr>
-                  <a className={`mx-2 my-1 ${userData.loggedIn === true ? "" : "hidden"}`} href='/account'>
+                  <a className={`mx-2 my-1 ${userInfo.loggedIn === true ? "" : "hidden"}`} href='/account'>
                     <li className='py-1 px-1 hover:bg-[#31652b52] cursor-pointer rounded-lg'>
                       Sign out
                     </li>
